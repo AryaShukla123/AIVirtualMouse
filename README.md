@@ -1,4 +1,4 @@
-# 🖱 AI Virtual Mouse
+#  AI Virtual Mouse
 
 A computer vision–based **AI Virtual Mouse** that allows users to control the system mouse cursor using **hand gestures** captured through a webcam or mobile camera.
 
@@ -16,7 +16,7 @@ This project uses **MediaPipe Hand Tracking** and **OpenCV** to detect hand land
 
 ---
 
-## 🛠 Technologies Used
+##  Technologies Used
 
 * **Python**
 * **OpenCV**
@@ -39,7 +39,7 @@ AIVirtualMouse/
 
 ---
 
-## ⚙ Installation & Setup
+##  Installation & Setup
 
 ### 1️⃣ Clone the Repository
 
@@ -62,7 +62,7 @@ pip install opencv-python mediapipe autopy numpy
 
 ---
 
-## ▶️ How to Run the Project
+##  How to Run the Project
 
 ```bash
 python AiVirtualMouseProject.py
@@ -85,7 +85,11 @@ Make sure:
 
 ##  Demo
 
-*(Add a demo video or GIF here)*
+*
+
+https://github.com/user-attachments/assets/e4fd5627-3702-43ce-a996-40da1c57b654
+
+*
 
 ---
 
