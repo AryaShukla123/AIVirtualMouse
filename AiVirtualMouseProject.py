@@ -6,13 +6,13 @@ import autopy
 
 wCam, hCam = 640, 480
 frameR = 100
-smoothening = 5
+smoothening = 7
 
 pTime = 0
 plocX, plocY = 0, 0
 clocX, clocY = 0, 0
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(3,wCam)
 cap.set(4,hCam)
 
@@ -24,6 +24,9 @@ wScr, hScr = autopy.screen.size()
 while True:
     # 1. Find hand Landmarks
     success, img = cap.read()
+    if not success:
+        print("Camera frame not received")
+        continue
     img = detector.findHands(img)
     lmList, bbox = detector.findPositions(img)
 
@@ -60,7 +63,7 @@ while True:
             x3 = max(0, min(wScr, x3))
             y3 = max(0, min(hScr, y3))
 
-            autopy.mouse.move(wScr-clocX, clocY)
+            autopy.mouse.move(clocX, clocY)
             h, w, c = img.shape
             cx, cy = int(x1 * w), int(y1 * h)
             cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
@@ -77,6 +80,8 @@ while True:
                 cv2.circle(img, (x2, y2), 15, (0, 255, 0), cv2.FILLED)
                 autopy.mouse.click()
 
+    time.sleep(0.01)
+
     # 11. Frame Rate
 
     cTime = time.time()
@@ -85,5 +90,13 @@ while True:
     cv2.putText(img, str(int(fps)), org=(20,50), fontFace=cv2.FONT_HERSHEY_PLAIN, fontScale=3, color=(0,0,255), thickness=3 )
 
     # 12. Display
+    cv2.namedWindow("Image",cv2.WINDOW_NORMAL)
+    cv2.setWindowProperty(
+        "Image",
+        cv2.WND_PROP_TOPMOST,
+        1
+    )
+    cv2.resizeWindow("Image",500,400)
+    cv2.moveWindow("Image",800,70)
     cv2.imshow("Image", img)
     cv2.waitKey(1)
